@@ -1,11 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { Text, View, StyleSheet, TextInput } from 'react-native';
+import Componente from './components/componente';
 
 export default function App() {
+  const [qtd, setQtd] = useState(0);
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <View style={styles.bloco}>
+        <Text style={styles.textoBloco}> Quantidade de Pessoas: </Text>
+        <TextInput 
+          style={styles.input}
+          value={qtd}
+          onChangeText={(value)=>setQtd(value)}
+        />
+      </View>
+      <Componente qtd={qtd}/>
     </View>
   );
 }
@@ -13,8 +22,23 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
   },
+  bloco:{
+    width:'100%',
+    marginBottom:20,
+    backgroundColor:'#1F618D'
+  },
+  textoBloco:{
+    marginLeft:'8%',
+    fontSize:22
+  },
+  input:{
+    borderWidth:1,
+    width:'80%',
+    marginLeft:'9%',
+    borderRadius:10,
+    fontSize:20
+  }
+  
 });
